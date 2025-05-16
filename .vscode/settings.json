@@ -18,7 +18,5 @@
   },
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "appService.defaultWebAppToDeploy": "/subscriptions/850206ae-f434-47e0-a48a-370b46a84831/resourceGroups/Rg-ZimVie-Dev/providers/Microsoft.Web/sites/zimvie",
-  "appService.deploySubpath": "build"
+  }
 }

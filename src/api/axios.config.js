@@ -1,14 +1,13 @@
+import { tWithErrorFallback } from '@hooks/useTranslationWithFallback';
 import axios from 'axios';
 import { CONFIG } from '../constants/config';
-import { tWithErrorFallback } from '../hooks/translationWithFallback';
-import { getToken } from './authentication';
+import LocalStorageService from './authentication';
 
 // Configuration constants
 export const AXIOS_BASE_CONFIG = {
   baseURL: CONFIG.API_BASE,
   headers: { 'Content-Type': 'application/json' },
 };
-
 
 export const CLIENT_TYPES = {
   ADMIN: 'admin',
@@ -110,7 +109,7 @@ const getAuthHeader = (clientType) => {
       return token ? `Bearer ${token}` : null;
     }
     case CLIENT_TYPES.LOGGED_IN: {
-      return `Bearer ${getToken()}`;
+      return `Bearer ${LocalStorageService.getToken()}`;
     }
     case CLIENT_TYPES.NON_LOGGED_IN:
       return null;

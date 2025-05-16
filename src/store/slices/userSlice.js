@@ -1,4 +1,4 @@
-import { createApiThunk, createCustomSlice } from './sliceUtils';
+import { createApiThunk, createCustomSlice } from '@utils/redux.utils';
 
 const getUserList = createApiThunk('users/getList', {
   url: '/users',
@@ -11,20 +11,25 @@ const initialState = {
   users: [],
 };
 
-const userSlice = createCustomSlice('users', initialState, {
-  // reducers
-  clearUsers(state) {
+const userSlice = createCustomSlice(
+  'users',
+  initialState,
+  {
+    // reducers
+    clearUsers(state) {
       state.users = [];
     },
-}, [
-  {
-    thunk: getUserList,
-    statusType: 'fetch',
-    onFulfilled: (state, action) => {
-      state.users = action.payload.data;
-    },
   },
-]);
+  [
+    {
+      thunk: getUserList,
+      statusType: 'fetch',
+      onFulfilled: (state, action) => {
+        state.users = action.payload.data;
+      },
+    },
+  ],
+);
 
 export const { clearUsers } = userSlice.actions;
 export const userReducer = userSlice.reducer;

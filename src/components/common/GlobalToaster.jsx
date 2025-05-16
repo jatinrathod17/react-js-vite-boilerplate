@@ -47,16 +47,14 @@ const GlobalToaster = () => {
         onClose={handleClose}
         show={toast.show}
         delay={toast.delay}
-        autohide={toast.autoHide}
-      >
+        autohide={toast.autoHide}>
         <Toast.Header>
           {toast.icon !== false && iconMap[toast.type]}
           <strong className="me-auto">{toast.title || ''}</strong>
         </Toast.Header>
         {toast.message && (
           <Toast.Body
-            className={['danger', 'success', 'primary'].includes(toast.type) ? 'text-white' : ''}
-          >
+            className={['danger', 'success', 'primary'].includes(toast.type) ? 'text-white' : ''}>
             {toast.message}
           </Toast.Body>
         )}

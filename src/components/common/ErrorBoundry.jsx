@@ -44,12 +44,14 @@ class ErrorBoundary extends Component {
 
       return (
         <div className="error-boundary-container">
-          <h2>{t('errorBoundary.errorMessage')}</h2>
-          <details>
+          <h2 className="error-title">{t('errorBoundary.errorMessage')}</h2>
+
+          <details className="error-details">
             <summary>{t('errorBoundary.details')}</summary>
-            <pre>{error?.toString()}</pre>
+            <pre className="error-message">{error?.toString()}</pre>
           </details>
-          <button onClick={this.resetErrorBoundary} className="error-boundary-reset-button">
+
+          <button onClick={this.resetErrorBoundary} className="error-button">
             {t('errorBoundary.tryAgain')}
           </button>
         </div>

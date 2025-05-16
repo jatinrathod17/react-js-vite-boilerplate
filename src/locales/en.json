@@ -9,8 +9,13 @@
     "emailRequired": "Email is required",
     "invalidEmail": "Invalid email"
   },
+  "common": {
+    "yes": "Yes",
+    "no": "No"
+  },
   "onlineGuard": {
     "title": "You're Offline",
     "message": "Please check your internet connection"
-  }
+  },
+  "errorBoundary": { "errorMessage": "Error!", "details": "Details", "tryAgain": "Try Again!" }
 }

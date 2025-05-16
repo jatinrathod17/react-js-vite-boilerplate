@@ -1,5 +1,3 @@
-import { useAppSelector } from '@store/index';
-import Style from '@styles/CssGlobal.module.scss';
 import PropTypes from 'prop-types';
 import { Form, Modal } from 'react-bootstrap';
 import CustomButton from './CustomButton';
@@ -12,28 +10,22 @@ const CustomModal = ({
   children,
   onConfirm,
   confirmText = 'Confirm',
-  closeText = 'Close',
+  cancelText = 'Close',
   scrollable = false,
   bodyClassName,
   footerClassName,
   asForm = false,
   onSubmit,
 }) => {
-  const status = useAppSelector((state) => state.emailTemplates.status);
-
   const modalContent = (
     <>
       <Modal.Body className={bodyClassName}>{children}</Modal.Body>
       <Modal.Footer className={footerClassName}>
         <CustomButton variant="link" onClick={onClose}>
-          {closeText}
+          {cancelText}
         </CustomButton>
         {onConfirm && (
-          <CustomButton
-            variant="secondary"
-            onClick={onConfirm}
-            loading={status.state === 'loading'}
-          >
+          <CustomButton variant="secondary" onClick={onConfirm} loading={false}>
             {confirmText}
           </CustomButton>
         )}
@@ -49,15 +41,14 @@ const CustomModal = ({
       centered
       scrollable={scrollable}
       backdrop="static"
-      keyboard={false}
-    >
+      keyboard={false}>
       {title && (
         <Modal.Header closeButton>
           <Modal.Title>{title}</Modal.Title>
         </Modal.Header>
       )}
       {asForm ? (
-        <Form onSubmit={onSubmit} className={Style.formScrollable}>
+        <Form onSubmit={onSubmit} className="formScrollable">
           {modalContent}
         </Form>
       ) : (
@@ -75,7 +66,7 @@ CustomModal.propTypes = {
   children: PropTypes.node.isRequired,
   onConfirm: PropTypes.func,
   confirmText: PropTypes.string,
-  closeText: PropTypes.string,
+  cancelText: PropTypes.string,
   bodyClassName: PropTypes.string,
   footerClassName: PropTypes.string,
   scrollable: PropTypes.bool,

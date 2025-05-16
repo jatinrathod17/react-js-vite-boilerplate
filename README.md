@@ -123,7 +123,6 @@ vitredux/
 │  ├── main.css
 │  ├── main.jsx
 │  ├── react-app-env.d.ts
-│  ├── reportWebVitals.js
 │  ├── setupTests.ts
 │  ├── vite-env.d.ts
 ├── .env
