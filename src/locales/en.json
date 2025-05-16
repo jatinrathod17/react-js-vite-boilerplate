@@ -1,0 +1,16 @@
+{
+  "form": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "submit": "Submit",
+    "firstNameRequired": "First name is required",
+    "lastNameRequired": "Last name is required",
+    "emailRequired": "Email is required",
+    "invalidEmail": "Invalid email"
+  },
+  "onlineGuard": {
+    "title": "You're Offline",
+    "message": "Please check your internet connection"
+  }
+}
