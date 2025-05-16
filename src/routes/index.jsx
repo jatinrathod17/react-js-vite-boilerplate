@@ -2,45 +2,46 @@ import GlobalAlert from '@components/common/GlobalAlert';
 import { OnlineGuard } from '@components/layouts/OnlineGuard';
 import PrivateLayout from '@components/layouts/PrivateLayout';
 import { lazy, Suspense } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import PrivateRoute from './PrivateRoute';
 
 // Lazy loaded components
 const Dashboard = lazy(() => import('@pages/Dashboard'));
 const NotFound = lazy(() => import('@pages/NotFound'));
-
 const Login = lazy(() => import('@pages/Login'));
 const ForgotPassword = lazy(() => import('@pages/ForgotPassword'));
 
 const Routes = () => {
-  // Replace with real auth logic
-  const isAuthenticated = false;
+  // Replace this with real auth logic
+  const isAuthenticated = true; // or true for testing
 
   const router = createBrowserRouter([
-    // Protected app routes
-    {
-      path: '/',
-      element: <PrivateLayout />,
-      children: [
-        {
-          path: 'dashboard',
-          element: (
-            <PrivateRoute isAuthenticated={isAuthenticated}>
-              <Dashboard />
-            </PrivateRoute>
-          ),
-        },
-      ],
-    },
     // Public routes
     {
-      path: '/login',
-      element: <Login />,
+      path: '/',
+      element: isAuthenticated ? <Navigate to="/dashboard" replace /> : <Login />,
     },
     {
       path: '/forgot-password',
-      element: <ForgotPassword />,
+      element: isAuthenticated ? <Navigate to="/dashboard" replace /> : <ForgotPassword />,
     },
+
+    // Protected routes
+    {
+      path: '/',
+      element: (
+        <PrivateRoute isAuthenticated={isAuthenticated}>
+          <PrivateLayout />
+        </PrivateRoute>
+      ),
+      children: [
+        {
+          path: 'dashboard',
+          element: <Dashboard />,
+        },
+      ],
+    },
+
     // Fallback route
     {
       path: '*',

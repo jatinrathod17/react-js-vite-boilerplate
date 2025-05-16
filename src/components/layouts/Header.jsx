@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <div className="header">
-      <div fluid className="d-flex align-items-center justify-content-between">
+      <div>
         <div className="logo-wrapper">Header</div>
       </div>
     </div>

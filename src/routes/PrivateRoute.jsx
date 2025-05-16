@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import { Navigate, useLocation } from 'react-router-dom';
 
-const PrivateRoute = ({ children, isAuthenticated, redirectPath = '/login' }) => {
+const PrivateRoute = ({ children, isAuthenticated, redirectPath = '/' }) => {
   const location = useLocation();
+
+  console.log('isAuthenticated', isAuthenticated);
 
   if (!isAuthenticated) {
     return <Navigate to={redirectPath} state={{ from: location }} replace />;
